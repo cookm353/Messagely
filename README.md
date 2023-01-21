@@ -2,8 +2,6 @@
 
 ## Instructions
 
----
-
 Run the following commands to install all dependencies, create the database, and start the server.
 
 ```BASH
@@ -14,9 +12,7 @@ nodemon dist/server.js
 
 ## Routes
 
----
-
-### Authorization Related Routes
+### **Authorization Related Routes**
 
 `POST /auth/login`
 
@@ -26,7 +22,7 @@ nodemon dist/server.js
 
 - Register new user
 
-### User Related Routes
+### **User Related Routes**
 
 `GET /users`
 
@@ -44,7 +40,7 @@ nodemon dist/server.js
 
 - Get messages sent by user
 
-### Message Related Routes
+### **Message Related Routes**
 
 `GET /messages/:id`
 

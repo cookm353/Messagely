@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS messagely;
+CREATE DATABASE messagely;
+
+\c messagely
+
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS users;
 

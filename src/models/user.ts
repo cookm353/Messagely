@@ -16,27 +16,6 @@ interface UserRegistration {
     phone: String
 }
 
-interface User {
-    username: String
-    first_name: String
-    last_name: String
-    phone: String
-}
-interface messageFrom {
-    id: Number
-    to_user: User
-    sent_at: String
-    read_at: String
-}
-
-interface messageTo {
-    id: Number
-    from_user: User
-    body: String
-    sent_at: String
-    read_at: String
-}
-
 class User {
 
     /** register new user -- returns

@@ -50,7 +50,7 @@ authRoutes.post('/register', async (req, resp, next) => {
         }
 
         const user = await User.register(req.body)
-        const token = jwt.sign({user}, SECRET_KEY)
+        const token = jwt.sign({username: user.username}, SECRET_KEY)
         await User.updateLoginTimestamp(username)
 
         return resp.json({token})

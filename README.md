@@ -1,5 +1,7 @@
 # Message.ly
 
+Message.ly is a simple private messaging app.  It's meant as an exercise to reinforce authentication and authorization patterns using bcrypt and JWT.
+
 ## Instructions
 
 Run the following commands to install all dependencies, create the database, and start the server.
@@ -55,3 +57,20 @@ nodemon dist/server.js
 
 - Mark message as read
 - Can only be used by message's recipient
+
+## Packages Used
+
+- Bcrypt
+- Express
+- jsonwebtoken
+- pg
+- Nunjucks
+- Jest
+- Supertest
+- Axios
+
+## Takeaways
+
+- Middleware is useful for simplifying route definitions and enforcing DRY
+- When assigning an alias to a column name in a SQL query, you need to use double quotes
+- Store the username and password for the DB in .env, add .env to .gitignore

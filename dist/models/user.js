@@ -155,26 +155,4 @@ class User {
         }
     }
 }
-async function register() {
-    // await db.query(`DELETE FROM messages`)
-    // await db.query(`DELETE FROM users`)
-    const aliceDetails = {
-        username: 'bob',
-        password: 'test123',
-        first_name: 'Bob',
-        last_name: 'Tester',
-        phone: '+914-686-0096'
-    };
-    const alice = await User.register(aliceDetails);
-    return alice;
-}
-async function main() {
-    // const alice = await register()
-    const msgs = await User.messagesTo('alicce');
-    console.log(msgs);
-    // await User.userExists('alice')
-    // const pass = await db.query(`SELECT password FROM users WHERE username ='alice'`)
-    // console.log(typeof pass.rows[0])
-}
-main();
 module.exports = User;

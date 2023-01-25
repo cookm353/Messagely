@@ -4,11 +4,25 @@ Message.ly is a simple private messaging app.  It's meant as an exercise to rein
 
 ## Instructions
 
-Run the following commands to install all dependencies, create the database, and start the server.
+First run the following commands to download the requirements and create the database and environment variable file.
 
-```BASH
+```
 npm i
 psql < data.sql
+touch .env
+```
+
+`.env` should have the following fields:
+
+```
+PGUSER=<user name>
+PGPASSWORD=<password>
+key=<JWT secret key>
+```
+
+After filling in the fields, you can start the server with the following command:
+
+```BASH
 nodemon dist/server.js
 ```
 
@@ -74,3 +88,6 @@ nodemon dist/server.js
 - Middleware is useful for simplifying route definitions and enforcing DRY
 - When assigning an alias to a column name in a SQL query, you need to use double quotes
 - Store the username and password for the DB in .env, add .env to .gitignore
+- When creating a new user, the most recent login date should be the same as the registration date
+- Middleware for authenticate JWTs should be applied to every route
+- The front end needs to store the JWT and send it with every request

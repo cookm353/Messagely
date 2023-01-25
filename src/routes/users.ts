@@ -1,6 +1,7 @@
 const express = require('express')
 const ExpressError = require('../expressError')
 const User = require('../models/user')
+const {ensureLoggedIn, ensureCorrectUser} = require('../middleware/auth')
 
 const userRoutes = express.Router()
 
@@ -9,7 +10,8 @@ const userRoutes = express.Router()
  * => {users: [{username, first_name, last_name, phone}, ...]}
  *
  **/
-userRoutes.get('/', async (req, resp, next) => {
+
+userRoutes.get('/', ensureLoggedIn, async (req, resp, next) => {
     try {
         const users = await User.all()
         return resp.json({users})
@@ -23,7 +25,7 @@ userRoutes.get('/', async (req, resp, next) => {
  * => {user: {username, first_name, last_name, phone, join_at, last_login_at}}
  *
  **/
-userRoutes.get('/:username', async (req, resp, next) => {
+userRoutes.get('/:username', ensureCorrectUser, async (req, resp, next) => {
     try {
         const {username} = req.params
         const user = await User.get(username)
@@ -34,7 +36,6 @@ userRoutes.get('/:username', async (req, resp, next) => {
     }
 })
 
-
 /** GET /:username/to - get messages to user
  *
  * => {messages: [{id,
@@ -44,7 +45,8 @@ userRoutes.get('/:username', async (req, resp, next) => {
  *                 from_user: {username, first_name, last_name, phone}}, ...]}
  *
  **/
-userRoutes.get('/:username/to', async (req, resp, next) => {
+
+userRoutes.get('/:username/to', ensureCorrectUser async (req, resp, next) => {
     try {
         const {username} = req.params
         const messages = await User.messagesTo(username)
@@ -64,7 +66,7 @@ userRoutes.get('/:username/to', async (req, resp, next) => {
  *                 to_user: {username, first_name, last_name, phone}}, ...]}
  *
  **/
-userRoutes.get('/:username/from', async (req, resp, next) => {
+userRoutes.get('/:username/from', ensureCorrectUser async (req, resp, next) => {
     try {
         const {username} = req.params
         const messages = await User.messagesFrom(username)
